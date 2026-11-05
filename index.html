@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A.T. Cellphone Repair Centre</title>
+<meta name="description" content="Phone, tablet and laptop repair, unlocking, accessories and buy & sell in London, Ontario. 15+ years experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p950:#12052b; --p900:#1e0b45; --p800:#2e1270; --p700:#4a1fa8; --p600:#5f2bd1;
+  --p500:#7c4dff; --p400:#9b7bff; --p300:#c7b6ff; --p100:#ece6ff; --p50:#f7f4ff;
+  --white:#fff; --ink:#1a1230; --muted:#5d5478; --line:#e4dcfb;
+  --radius:22px;
+  --head:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--head);line-height:1.08;letter-spacing:-.02em}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--p600)}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+section{padding:110px 0}
+.sec-head{max-width:640px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(2rem,4.2vw,3.1rem);margin:12px 0 14px}
+.sec-head p{color:var(--muted);font-size:1.07rem}
+
+/* ---------- status bar ---------- */
+.statusbar{position:fixed;inset:0 0 auto 0;height:30px;z-index:60;background:var(--p950);color:#fff;
+  display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:.8rem;font-weight:600}
+.statusbar .mid{opacity:.6;font-weight:500;letter-spacing:.04em}
+.sb-icons{display:flex;gap:7px;align-items:center}
+.batt{width:24px;height:11px;border:1.5px solid #fff;border-radius:3px;position:relative;padding:1px}
+.batt::after{content:"";position:absolute;right:-4px;top:2.5px;width:2px;height:4px;background:#fff;border-radius:0 1px 1px 0}
+.batt i{display:block;height:100%;width:80%;background:#b9ff8a;border-radius:1px;animation:charge 4s ease-in-out infinite}
+@keyframes charge{0%,100%{width:55%}50%{width:100%}}
+
+/* ---------- dynamic island nav ---------- */
+.island{position:fixed;top:40px;left:50%;transform:translateX(-50%);z-index:55;
+  background:#0b0418;color:#fff;border-radius:999px;padding:8px 8px 8px 18px;display:flex;align-items:center;gap:22px;
+  box-shadow:0 14px 40px -10px rgba(30,11,69,.55);transition:padding .35s,gap .35s}
+.island .logo{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;white-space:nowrap}
+.logo-mark{background:#fff;color:var(--p700);padding:2px 7px;border-radius:7px;font-size:.95rem;letter-spacing:-.03em}
+.cam{width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#4b3a7a,#0b0418 70%);box-shadow:0 0 0 2px #1b1033}
+.island ul{display:flex;list-style:none;gap:4px}
+.island ul a,.island .call{white-space:nowrap}
+.island ul a{padding:8px 13px;border-radius:999px;font-size:.9rem;color:#d9cfff;transition:.2s}
+.island ul a:hover{background:#ffffff14;color:#fff}
+.island .call{background:var(--p500);color:#fff;padding:9px 16px;border-radius:999px;font-weight:600;font-size:.9rem;display:flex;gap:7px;align-items:center}
+.island .call:hover{background:var(--p400)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 22px;border-radius:999px;font-weight:600;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--p600);color:#fff;box-shadow:0 12px 26px -10px var(--p600)}
+.btn-primary:hover{background:var(--p700)}
+.btn-ghost{background:#fff;color:var(--p800);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--p400)}
+.btn svg,.island svg{width:18px;height:18px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:150px 0 90px;background:
+  radial-gradient(900px 500px at 85% 10%,#e6dcff 0,transparent 60%),
+  radial-gradient(600px 400px at 0% 90%,#f0eaff 0,transparent 60%),var(--white);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 6px;font-size:.86rem;font-weight:500;box-shadow:0 6px 20px -12px rgba(74,31,168,.4)}
+.badge .dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#e7f9e9;}
+.badge .dot i{width:8px;height:8px;border-radius:50%;background:#1fae4b;box-shadow:0 0 0 0 #1fae4b88;animation:ping 1.8s infinite}
+.badge.closed .dot{background:#fde8ea}.badge.closed .dot i{background:#d8334a;animation:none}
+@keyframes ping{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero h1{font-size:clamp(2.7rem,6.4vw,5rem);margin:22px 0 20px}
+.hero h1 .swap{display:inline-block;color:var(--p600);position:relative}
+.hero h1 .swap::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.14em;background:var(--p300);z-index:-1;border-radius:4px}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:520px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 34px}
+.stats{display:flex;gap:34px;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--head);font-size:1.9rem;color:var(--p800)}
+.stat span{font-size:.86rem;color:var(--muted)}
+
+/* phone mockup */
+.phone-stage{position:relative;display:grid;place-items:center;min-height:640px}
+.orbit{position:absolute;width:520px;height:520px;border-radius:50%;border:1.5px dashed var(--p300);animation:spin 40s linear infinite}
+.orbit::before,.orbit::after{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:var(--p500);top:50%;left:-7px}
+.orbit::after{left:auto;right:30%;top:-7px;background:var(--p300)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.phone{position:relative;width:300px;height:620px;border-radius:52px;padding:11px;
+  background:linear-gradient(145deg,#2c2245,#0b0418 40%,#231a3b);
+  box-shadow:0 0 0 2px #3c3058,0 50px 80px -30px rgba(30,11,69,.7),inset 0 0 0 1px #ffffff1a;transform:rotate(-4deg);transition:transform .6s}
+.phone:hover{transform:rotate(0)}
+.phone::before,.phone::after{content:"";position:absolute;background:#2c2245;border-radius:3px}
+.phone::before{left:-4px;top:130px;width:4px;height:60px;box-shadow:0 76px 0 #2c2245}
+.phone::after{right:-4px;top:170px;width:4px;height:90px}
+.screen{position:relative;width:100%;height:100%;border-radius:42px;overflow:hidden;color:#fff;
+  background:radial-gradient(circle at 30% 20%,#a07bff 0,transparent 45%),radial-gradient(circle at 80% 75%,#5f2bd1 0,transparent 50%),linear-gradient(170deg,#6a35e8,#2e1270 60%,#12052b)}
+.di{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:98px;height:29px;background:#000;border-radius:20px;z-index:5}
+.ls-top{display:flex;justify-content:space-between;padding:15px 26px 0;font-size:.76rem;font-weight:600}
+.ls-date{text-align:center;margin-top:34px;font-size:.95rem;font-weight:500;opacity:.9}
+.ls-time{text-align:center;font-family:var(--head);font-size:5rem;font-weight:600;line-height:1;letter-spacing:-.03em}
+.notifs{position:absolute;left:12px;right:12px;bottom:100px;display:flex;flex-direction:column;gap:8px}
+.notif{background:#ffffff26;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:18px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;font-size:.78rem;
+  opacity:0;transform:translateY(14px);animation:pop .6s forwards}
+.notif:nth-child(2){animation-delay:.5s}.notif:nth-child(3){animation-delay:1s}
+@keyframes pop{to{opacity:1;transform:none}}
+.notif .ic{flex:none;width:30px;height:30px;border-radius:8px;background:#fff;color:var(--p700);display:grid;place-items:center;font-family:var(--head);font-weight:700;font-size:.7rem}
+.notif b{display:block;font-size:.8rem}
+.notif small{opacity:.8}
+.ls-bottom{position:absolute;bottom:22px;left:0;right:0;display:flex;justify-content:space-between;padding:0 34px;align-items:center}
+.ls-btn{width:44px;height:44px;border-radius:50%;background:#ffffff2e;display:grid;place-items:center;backdrop-filter:blur(8px)}
+.ls-btn svg{width:20px;height:20px}
+.homebar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:110px;height:5px;border-radius:5px;background:#fff}
+.crack{position:absolute;inset:0;z-index:4;pointer-events:none;transition:opacity .8s,clip-path 1.1s}
+.crack svg{width:100%;height:100%}
+.screen.fixed .crack{opacity:0;clip-path:inset(100% 0 0 0)}
+.scan{position:absolute;left:0;right:0;height:80px;top:-80px;z-index:6;pointer-events:none;
+  background:linear-gradient(180deg,transparent,#c7b6ffaa,transparent)}
+.screen.fixing .scan{animation:scan 1.1s ease-in-out}
+@keyframes scan{to{top:100%}}
+.fix-btn{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);z-index:8;white-space:nowrap}
+.float-chip{position:absolute;background:#fff;border-radius:16px;padding:10px 14px;font-size:.82rem;font-weight:600;box-shadow:0 16px 36px -16px rgba(30,11,69,.45);display:flex;gap:9px;align-items:center;animation:bob 5s ease-in-out infinite}
+.float-chip .i{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:var(--p100);color:var(--p700)}
+.float-chip .i svg{width:17px;height:17px}
+.fc1{top:70px;left:-10px}.fc2{bottom:120px;right:-20px;animation-delay:-2.5s}
+@keyframes bob{50%{transform:translateY(-10px)}}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--p900);color:#fff;padding:22px 0;overflow:hidden;white-space:nowrap}
+.marquee .track{display:inline-flex;gap:46px;animation:scroll 32s linear infinite;font-family:var(--head);font-size:1.35rem;font-weight:600}
+.marquee span{display:inline-flex;align-items:center;gap:46px;opacity:.9}
+.marquee span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--p400)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- services: home screen ---------- */
+#services{background:var(--p50)}
+.home{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:stretch}
+.homescreen{border-radius:36px;padding:34px 28px 26px;color:#fff;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 80% 0%,#9b7bff 0,transparent 45%),radial-gradient(circle at 0% 100%,#5f2bd1 0,transparent 50%),linear-gradient(160deg,#4a1fa8,#1e0b45);
+  box-shadow:0 0 0 10px #0b0418,0 40px 70px -30px rgba(30,11,69,.7)}
+.homescreen .hs-status{display:flex;justify-content:space-between;font-size:.78rem;font-weight:600;opacity:.85;margin-bottom:26px}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 14px}
+.app{background:none;border:0;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.78rem;font-weight:500;text-align:center}
+.app .icon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(150deg,#fff,#e9e1ff);color:var(--p700);
+  box-shadow:0 8px 18px -8px #0008;transition:transform .25s}
+.app .icon svg{width:30px;height:30px}
+.app:nth-child(3n+2) .icon{background:linear-gradient(150deg,#9b7bff,#5f2bd1);color:#fff}
+.app:nth-child(3n) .icon{background:linear-gradient(150deg,#2e1270,#12052b);color:#c7b6ff}
+.app:hover .icon{transform:translateY(-4px) scale(1.05)}
+.app.active .icon{outline:3px solid #fff;outline-offset:3px}
+.dock{margin-top:30px;background:#ffffff1f;backdrop-filter:blur(10px);border-radius:26px;padding:12px;display:flex;justify-content:space-around}
+.dock a{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:#fff;color:var(--p700)}
+.dock a:nth-child(2){background:#2fbf5a;color:#fff}.dock a:nth-child(3){background:var(--p500);color:#fff}.dock a:nth-child(4){background:#12052b;color:#fff}
+.dock svg{width:26px;height:26px}
+.app-sheet{background:#fff;border-radius:36px;padding:36px;border:1px solid var(--line);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.app-sheet .grab{width:44px;height:5px;border-radius:5px;background:var(--line);margin:-14px auto 26px}
+.app-sheet .big-icon{width:76px;height:76px;border-radius:22px;background:linear-gradient(150deg,#7c4dff,#4a1fa8);color:#fff;display:grid;place-items:center;margin-bottom:20px}
+.app-sheet .big-icon svg{width:38px;height:38px}
+.app-sheet h3{font-size:1.9rem;margin-bottom:10px}
+.app-sheet p{color:var(--muted)}
+.app-sheet ul{list-style:none;margin:20px 0 28px;display:grid;gap:10px}
+.app-sheet li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem}
+.app-sheet li::before{content:"";flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;background:var(--p100) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a1fa8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat}
+.app-sheet .btn{margin-top:auto;align-self:flex-start}
+.app-sheet.anim{animation:sheet .45s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes sheet{from{opacity:0;transform:translateY(24px) scale(.98)}}
+
+/* ---------- booking: messages app ---------- */
+.book-grid{display:grid;grid-template-columns:1fr 380px;gap:60px;align-items:center}
+.perks{display:grid;gap:16px;margin-top:30px}
+.perk{display:flex;gap:16px;align-items:flex-start;background:var(--p50);border:1px solid var(--line);border-radius:18px;padding:18px}
+.perk .i{flex:none;width:44px;height:44px;border-radius:14px;background:var(--p600);color:#fff;display:grid;place-items:center}
+.perk .i svg{width:22px;height:22px}
+.perk b{display:block;font-family:var(--head);font-size:1.08rem}
+.perk span{color:var(--muted);font-size:.93rem}
+.ar{font-family:system-ui,sans-serif;font-weight:700;color:var(--p600)}
+.msg-phone{width:100%;max-width:380px;justify-self:center;border-radius:50px;padding:11px;background:#0b0418;box-shadow:0 0 0 2px #3c3058,0 50px 80px -30px rgba(30,11,69,.6)}
+.msg-screen{border-radius:40px;overflow:hidden;background:#fff;height:660px;display:flex;flex-direction:column;position:relative}
+.msg-screen .di{top:10px}
+.msg-head{padding:48px 18px 14px;text-align:center;border-bottom:1px solid #eee;background:#faf8ff}
+.avatar{width:50px;height:50px;border-radius:50%;margin:0 auto 6px;background:linear-gradient(150deg,#7c4dff,#2e1270);color:#fff;display:grid;place-items:center;font-family:var(--head);font-weight:700}
+.msg-head b{font-size:.9rem}.msg-head small{display:block;color:var(--muted);font-size:.72rem}
+.msgs{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:10px;font-size:.88rem}
+.bub{max-width:82%;padding:9px 13px;border-radius:20px;line-height:1.35}
+.them{background:#efeaf9;align-self:flex-start;border-bottom-left-radius:6px}
+.me{background:var(--p600);color:#fff;align-self:flex-end;border-bottom-right-radius:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-end;justify-content:flex-end;max-width:92%}
+.chip{border:1.5px solid var(--p300);background:#fff;color:var(--p700);padding:6px 11px;border-radius:999px;font-size:.8rem;font-weight:600;cursor:pointer;transition:.15s}
+.chip:hover{border-color:var(--p500)}
+.chip.on{background:var(--p600);border-color:var(--p600);color:#fff}
+.msg-input{display:flex;gap:8px;padding:10px 12px 24px;border-top:1px solid #eee;align-items:center}
+.msg-input input{flex:1;border:1.5px solid #e4e0ef;border-radius:999px;padding:10px 14px;font-size:.88rem;outline:none}
+.msg-input input:focus{border-color:var(--p400)}
+.send{width:40px;height:40px;border-radius:50%;border:0;background:var(--p600);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.send svg{width:18px;height:18px}
+.send:disabled{background:#cfc6e8;cursor:not-allowed}
+
+/* ---------- shop: widgets ---------- */
+#shop{background:linear-gradient(180deg,#fff,var(--p50))}
+.widgets{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:18px}
+.w{border-radius:28px;padding:22px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line);background:#fff;transition:transform .3s,box-shadow .3s}
+.w:hover{transform:translateY(-5px);box-shadow:0 26px 40px -24px rgba(74,31,168,.45)}
+.w h3{font-size:1.3rem}
+.w p{font-size:.88rem;color:var(--muted)}
+.w .wi{position:absolute;top:20px;left:22px;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--p100);color:var(--p700)}
+.w .wi svg{width:22px;height:22px}
+.w-lg{grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#5f2bd1,#1e0b45);color:#fff;border:0}
+.w-lg p{color:#d9cfff;font-size:1rem;max-width:340px}
+.w-lg h3{font-size:2rem;margin-bottom:8px}
+.w-lg .wi{background:#ffffff22;color:#fff}
+.w-wide{grid-column:span 2}
+.w-dark{background:var(--p900);color:#fff;border:0}.w-dark p{color:#c7b6ff}.w-dark .wi{background:#ffffff1a;color:#fff}
+.mini-phones{position:absolute;right:-20px;top:30px;display:flex;gap:12px;transform:rotate(-12deg)}
+.mini-phones i{display:block;width:90px;height:180px;border-radius:22px;border:5px solid #0b0418;background:linear-gradient(170deg,#c7b6ff,#7c4dff 50%,#2e1270)}
+.mini-phones i:nth-child(2){margin-top:40px;background:linear-gradient(170deg,#fff,#9b7bff 60%,#4a1fa8)}
+.mini-phones i:nth-child(3){margin-top:-10px;background:linear-gradient(170deg,#7c4dff,#1e0b45)}
+
+/* ---------- carriers ---------- */
+.carriers{background:var(--p900);color:#fff;border-radius:36px;padding:56px;display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.carriers::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-120px;top:-160px;background:radial-gradient(circle,#7c4dff66,transparent 70%)}
+.carriers h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin:12px 0}
+.carriers .eyebrow{color:var(--p300)}
+.carriers p{color:#d4c9ff}
+.sim-list{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.sim{display:flex;align-items:center;gap:10px;background:#ffffff12;border:1px solid #ffffff22;border-radius:14px;padding:10px 16px;font-weight:600}
+.sim::before{content:"";width:16px;height:20px;border-radius:3px 7px 3px 3px;background:linear-gradient(135deg,#e9d98a,#b89a3c)}
+.sim.auth{background:#fff;color:var(--p800)}
+.sim.auth small{font-size:.68rem;background:var(--p100);color:var(--p700);padding:2px 7px;border-radius:6px;font-weight:700}
+
+/* ---------- visit ---------- */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{background:#fff;border:1px solid var(--line);border-radius:30px;padding:30px}
+.card h3{font-size:1.4rem;margin-bottom:4px}
+.card .sub{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+.alarm{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #f0ecfa}
+.alarm:last-child{border:0}
+.alarm .t{font-family:var(--head);font-size:1.35rem;font-weight:600}
+.alarm .d{font-size:.82rem;color:var(--muted)}
+.alarm.today .t{color:var(--p600)}
+.alarm.today .d::after{content:" · Today";color:var(--p600);font-weight:600}
+.alarm.off .t{color:#b9b2cc}
+.toggle{width:50px;height:30px;border-radius:30px;background:var(--p600);position:relative;flex:none}
+.toggle::after{content:"";position:absolute;top:3px;right:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 5px #0003}
+.off .toggle{background:#e1dcef}.off .toggle::after{right:auto;left:3px}
+.map{border-radius:30px;overflow:hidden;border:1px solid var(--line);min-height:300px;position:relative;background:var(--p100)}
+.map iframe{width:100%;height:100%;min-height:300px;border:0;display:block;filter:hue-rotate(15deg) saturate(.9)}
+.contact-rows{display:grid;gap:12px;margin-top:22px}
+.crow{display:flex;gap:14px;align-items:center;padding:14px;border-radius:18px;background:var(--p50);transition:.2s}
+.crow:hover{background:var(--p100)}
+.crow .i{width:42px;height:42px;border-radius:13px;background:var(--p600);color:#fff;display:grid;place-items:center;flex:none}
+.crow .i svg{width:20px;height:20px}
+.crow b{display:block;font-size:.95rem}.crow span{font-size:.84rem;color:var(--muted)}
+.visit-side{display:grid;gap:28px;grid-template-rows:auto 1fr}
+
+/* ---------- footer ---------- */
+footer{background:var(--p950);color:#cfc4f5;padding:60px 0 110px}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+footer .logo{display:flex;gap:10px;align-items:center;font-family:var(--head);font-weight:700;color:#fff;font-size:1.2rem;margin-bottom:10px}
+footer a:hover{color:#fff}
+.foot-links{display:flex;gap:46px;flex-wrap:wrap;font-size:.92rem}
+.foot-links div{display:grid;gap:8px}
+.foot-links b{color:#fff;font-family:var(--head)}
+.copy{margin-top:40px;padding-top:22px;border-top:1px solid #ffffff14;font-size:.8rem;opacity:.7}
+
+/* mobile home-bar call */
+.homebar-cta{display:none}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .hero-grid,.home,.book-grid,.visit-grid,.carriers{grid-template-columns:1fr}
+  .phone-stage{min-height:600px}
+  .widgets{grid-template-columns:repeat(2,1fr)}
+  .island ul{display:none}
+  .carriers{padding:36px 26px}
+}
+@media (max-width:600px){
+  section{padding:80px 0}
+  .wrap{padding:0 16px}
+  .statusbar .mid{display:none}
+  .island{gap:12px;padding-left:14px;max-width:calc(100% - 24px)}
+  .island .call span{display:none}
+  .hero{padding-top:130px}
+  .orbit{width:360px;height:360px}
+  .phone{width:260px;height:540px}
+  .ls-time{font-size:4.2rem}
+  .float-chip{display:none}
+  .apps{grid-template-columns:repeat(4,1fr);gap:18px 6px}
+  .app .icon{width:54px;height:54px;border-radius:15px}
+  .app{font-size:.68rem}
+  .homescreen{padding:28px 16px 20px}
+  .widgets{grid-template-columns:1fr;grid-auto-rows:170px}
+  .w-lg,.w-wide{grid-column:span 1}
+  .w-lg{grid-row:span 2}
+  .app-sheet{padding:28px 22px}
+  .homebar-cta{display:flex;position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:50;gap:8px;background:#0b0418;padding:7px;border-radius:999px;box-shadow:0 12px 30px -8px #000a}
+  .homebar-cta a{padding:11px 18px;border-radius:999px;color:#fff;font-weight:600;font-size:.88rem}
+  .homebar-cta a:first-child{background:var(--p500)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.notif{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 21l2-5.6A8.4 8.4 0 1 1 21 11.5z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-6.6-8-12.5a8 8 0 0 1 16 0C20 15.4 12 22 12 22z"/><circle cx="12" cy="9.5" r="3"/></symbol>
+    <symbol id="i-screen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M9 7l3 3-2 3 4 3"/></symbol>
+    <symbol id="i-batt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2M11 9l-2 3h4l-2 3"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0zM12 17v5"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7l5.7 5.7a8 8 0 1 1-11.3 0z"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4"/></symbol>
+    <symbol id="i-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.8-1.2"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4M21 7H8M7 21l-4-4 4-4M3 17h13"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M8 2l4 4 4-4"/></symbol>
+    <symbol id="i-sim" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><rect x="8" y="11" width="8" height="7" rx="1"/></symbol>
+    <symbol id="i-cash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><circle cx="10" cy="6.5" r="1.5"/><circle cx="10" cy="10.5" r="1.5"/></symbol>
+    <symbol id="i-game" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6L2 15a3 3 0 0 0 5.4 2l1.2-1.6h6.8l1.2 1.6A3 3 0 0 0 22 15l-.7-6.4a4 4 0 0 0-4-3.6z"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><circle cx="12" cy="6" r="1"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-flash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6l-1 6h3l-6 14 1-9H8z"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  </defs>
+</svg>
+
+<!-- status bar -->
+<div class="statusbar" aria-hidden="true">
+  <span class="js-time">9:41</span>
+  <span class="mid">A.T. CELLULAR · LONDON, ON · 5G</span>
+  <span class="sb-icons">
+    <svg width="17" height="11" viewBox="0 0 17 11" fill="#fff"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+    <svg width="15" height="11" viewBox="0 0 24 18" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M2 6a15 15 0 0 1 20 0M5.5 9.7a10 10 0 0 1 13 0M9 13.3a5 5 0 0 1 6 0"/><circle cx="12" cy="16.5" r="1" fill="#fff"/></svg>
+    <span class="batt"><i></i></span>
+  </span>
+</div>
+
+<!-- dynamic island nav -->
+<nav class="island" aria-label="Main">
+  <a href="#top" class="logo"><span class="cam"></span><span class="logo-mark">A.T.</span> Cellphone</a>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#book">Book a repair</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a class="call" href="tel:+15192047300"><svg><use href="#i-phone"/></svg><span>519-204-7300</span></a>
+</nav>
+
+<!-- hero -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge js-open"><span class="dot"><i></i></span><span class="js-open-text">Open today · 10:30 a.m.–7 p.m.</span></span>
+      <h1>Cracked, dead or locked?<br>We <span class="swap js-swap">fix it.</span></h1>
+      <p class="lead">London's one-stop cellphone shop in White Oaks. Fast repairs for phones, tablets and laptops, plus unlocking, accessories, and buying &amp; selling devices. Over 15 years at the bench.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#book"><svg><use href="#i-msg"/></svg>Book a repair</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=1401+Ernest+Ave+%2315+London+ON+N6E+2P6" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Get directions</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>15+</b><span>years experience</span></div>
+        <div class="stat"><b>4.4<svg style="width:20px;height:20px;color:#f5b301;vertical-align:-2px;margin-left:3px"><use href="#i-star"/></svg></b><span>102 Google reviews</span></div>
+        <div class="stat"><b>Free</b><span>glass or headphones with any repair</span></div>
+      </div>
+    </div>
+
+    <div class="phone-stage">
+      <div class="orbit" aria-hidden="true"></div>
+      <div class="float-chip fc1"><span class="i"><svg><use href="#i-shield"/></svg></span>Screen restored</div>
+      <div class="float-chip fc2"><span class="i"><svg><use href="#i-batt"/></svg></span>Battery 100%</div>
+      <div class="phone">
+        <div class="screen js-screen">
+          <div class="di"></div>
+          <div class="ls-top"><span>A.T. 5G</span><span class="js-time">9:41</span></div>
+          <div class="ls-date js-date">Thursday, November 5</div>
+          <div class="ls-time js-time">9:41</div>
+          <div class="notifs">
+            <div class="notif"><span class="ic">A.T.</span><div><b>Repairs while you wait</b><small>Most screens &amp; batteries same day</small></div></div>
+            <div class="notif"><span class="ic">A.T.</span><div><b>Free gift with repair</b><small>Tempered glass or headphones on us</small></div></div>
+            <div class="notif"><span class="ic">ع</span><div><b>نتكلم العربية</b><small>We speak Arabic</small></div></div>
+          </div>
+          <div class="ls-bottom"><span class="ls-btn"><svg><use href="#i-flash"/></svg></span><span class="ls-btn"><svg><use href="#i-cam"/></svg></span></div>
+          <div class="homebar"></div>
+          <div class="crack" aria-hidden="true">
+            <svg viewBox="0 0 280 600" fill="none" stroke="#fff" stroke-linecap="round">
+              <g stroke-width="1.6" opacity=".85">
+                <path d="M190 210 L150 150 L160 90 L130 20"/><path d="M190 210 L250 170 L280 180"/>
+                <path d="M190 210 L230 280 L270 300"/><path d="M190 210 L140 260 L80 250 L0 290"/>
+                <path d="M190 210 L180 320 L150 400 L160 480 L120 600"/><path d="M150 150 L100 130 L40 150"/>
+                <path d="M230 280 L220 360 L250 430"/><path d="M140 260 L120 340 L60 380"/>
+              </g>
+              <g stroke-width=".8" opacity=".55">
+                <path d="M160 90 L200 60"/><path d="M80 250 L60 200"/><path d="M180 320 L230 340"/><path d="M150 400 L100 420"/><path d="M120 340 L150 360"/>
+              </g>
+              <circle cx="190" cy="210" r="9" stroke-width="1.4" opacity=".7"/>
+            </svg>
+          </div>
+          <div class="scan"></div>
+        </div>
+        <button class="btn btn-primary fix-btn js-fix" type="button">Tap to repair this screen</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- marquee -->
+<div class="marquee" aria-label="Devices we repair">
+  <div class="track">
+    <span>iPhone</span><span>Samsung Galaxy</span><span>Google Pixel</span><span>iPad</span><span>LG</span><span>Motorola</span><span>Tablets</span><span>Laptops</span><span>iPod</span><span>Game consoles</span>
+    <span>iPhone</span><span>Samsung Galaxy</span><span>Google Pixel</span><span>iPad</span><span>LG</span><span>Motorola</span><span>Tablets</span><span>Laptops</span><span>iPod</span><span>Game consoles</span>
+  </div>
+</div>
+
+<!-- services -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Services</span>
+      <h2>Everything we do,<br>one tap away.</h2>
+      <p>Tap an app to see what's included. If it's broken, locked or slow, chances are we can fix it.</p>
+    </div>
+    <div class="home rv">
+      <div class="homescreen">
+        <div class="hs-status"><span class="js-time">9:41</span><span>A.T. Home</span></div>
+        <div class="apps js-apps"></div>
+        <div class="dock">
+          <a href="tel:+15192047300" aria-label="Call"><svg><use href="#i-phone"/></svg></a>
+          <a href="sms:+15192047300" aria-label="Text"><svg><use href="#i-msg"/></svg></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=1401+Ernest+Ave+%2315+London+ON" target="_blank" rel="noopener" aria-label="Map"><svg><use href="#i-pin"/></svg></a>
+          <a href="https://atcellphonerepaircentre.com" target="_blank" rel="noopener" aria-label="Website"><svg><use href="#i-globe"/></svg></a>
+        </div>
+      </div>
+      <div class="app-sheet js-sheet" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- booking -->
+<section id="book">
+  <div class="wrap book-grid">
+    <div class="rv">
+      <span class="eyebrow">Book a repair</span>
+      <h2 style="font-size:clamp(2rem,4.2vw,3.1rem);margin:12px 0 14px">Text us like you'd text a friend.</h2>
+      <p style="color:var(--muted);font-size:1.07rem;max-width:520px">Answer three quick questions in the chat and we'll open a text to the shop with everything filled in. We'll reply with a price and time. Rather talk? Call <a href="tel:+15192047300" style="color:var(--p600);font-weight:600">(519) 204-7300</a>.</p>
+      <div class="perks">
+        <div class="perk"><span class="i"><svg><use href="#i-clock"/></svg></span><div><b>Quick turnaround</b><span>Common screen, battery and port repairs are often done the same day.</span></div></div>
+        <div class="perk"><span class="i"><svg><use href="#i-chip"/></svg></span><div><b>Board-level repair</b><span>Microscope micro-soldering and laser back-glass machines in-house.</span></div></div>
+        <div class="perk"><span class="i"><svg><use href="#i-globe"/></svg></span><div><b>English &amp; <span class="ar">العربية</span></b><span>Ask us in whichever language you're comfortable with.</span></div></div>
+      </div>
+    </div>
+
+    <div class="msg-phone rv">
+      <div class="msg-screen">
+        <div class="di"></div>
+        <div class="msg-head"><div class="avatar">A.T.</div><b>A.T. Repair</b><small>Usually replies during store hours</small></div>
+        <div class="msgs js-msgs">
+          <div class="bub them">Hey! 👋 What device needs fixing?</div>
+          <div class="chips" data-q="device">
+            <button class="chip" type="button">iPhone</button><button class="chip" type="button">Samsung</button><button class="chip" type="button">Pixel</button><button class="chip" type="button">Other phone</button><button class="chip" type="button">iPad / tablet</button><button class="chip" type="button">Laptop</button><button class="chip" type="button">Console</button>
+          </div>
+          <div class="bub them">What's going on with it?</div>
+          <div class="chips" data-q="issue">
+            <button class="chip" type="button">Cracked screen</button><button class="chip" type="button">Battery</button><button class="chip" type="button">Won't charge</button><button class="chip" type="button">Water damage</button><button class="chip" type="button">Back glass</button><button class="chip" type="button">Camera</button><button class="chip" type="button">Unlock</button><button class="chip" type="button">Something else</button>
+          </div>
+          <div class="bub them">Model and your name? (e.g. "iPhone 13, Sara")</div>
+          <div class="js-preview"></div>
+        </div>
+        <form class="msg-input js-form">
+          <input class="js-name" type="text" placeholder="iMessage" aria-label="Model and name" maxlength="80">
+          <button class="send js-send" type="submit" aria-label="Send text to shop" disabled><svg><use href="#i-send"/></svg></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- shop -->
+<section id="shop">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">In the store</span>
+      <h2>More than a repair shop.</h2>
+      <p>Walls of accessories, shelves of phones, and a few things you wouldn't expect. Drop in and look around.</p>
+    </div>
+    <div class="widgets rv">
+      <div class="w w-lg">
+        <div class="mini-phones" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="wi"><svg><use href="#i-swap"/></svg></span>
+        <h3>Buy, sell &amp; trade phones</h3>
+        <p>New and pre-owned iPhone and Samsung Galaxy devices. Bring your old phone in for cash or credit toward an upgrade.</p>
+      </div>
+      <div class="w"><span class="wi"><svg><use href="#i-shield"/></svg></span><h3>Cases &amp; glass</h3><p>Privacy, matte and clear protectors</p></div>
+      <div class="w w-dark"><span class="wi"><svg><use href="#i-plug"/></svg></span><h3>Chargers</h3><p>Cables, car chargers, power banks</p></div>
+      <div class="w w-wide"><span class="wi"><svg><use href="#i-sound"/></svg></span><h3>Speakers &amp; audio</h3><p>Party speakers, earbuds, headphones and lavalier mics</p></div>
+      <div class="w"><span class="wi"><svg><use href="#i-laptop"/></svg></span><h3>Laptops</h3><p>Refurbished laptops and repairs</p></div>
+      <div class="w"><span class="wi"><svg><use href="#i-tv"/></svg></span><h3>TVs &amp; TV boxes</h3><p>We sell TV boxes and program them</p></div>
+      <div class="w w-dark"><span class="wi"><svg><use href="#i-game"/></svg></span><h3>Gaming</h3><p>Consoles, controllers and retro systems</p></div>
+      <div class="w w-wide"><span class="wi"><svg><use href="#i-cash"/></svg></span><h3>Western Union</h3><p>Send money in-store while your phone is on the bench</p></div>
+      <div class="w"><span class="wi"><svg><use href="#i-bag"/></svg></span><h3>Watch bands</h3><p>Smartwatch bands and cases</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- carriers -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="carriers rv">
+      <div>
+        <span class="eyebrow">Plans &amp; SIMs</span>
+        <h2>Get connected before you leave.</h2>
+        <p>We're an authorized agent for Rogers and chatr, and we can help with SIM cards and activations for most Canadian carriers.</p>
+      </div>
+      <div class="sim-list">
+        <span class="sim auth">Rogers <small>AUTHORIZED</small></span>
+        <span class="sim auth">chatr <small>AUTHORIZED</small></span>
+        <span class="sim">Freedom</span><span class="sim">Fido</span><span class="sim">Koodo</span><span class="sim">Telus</span><span class="sim">Bell</span><span class="sim">Virgin Plus</span><span class="sim">Lucky</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- visit -->
+<section id="visit" style="background:var(--p50)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Visit us</span>
+      <h2>White Oaks, London.</h2>
+      <p>Plaza parking right out front. Walk-ins welcome during store hours.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="card rv">
+        <h3>Store hours</h3>
+        <div class="sub">Set like alarms, so you never miss us.</div>
+        <div class="js-hours"></div>
+      </div>
+      <div class="visit-side rv">
+        <div class="card" style="padding:22px">
+          <div class="contact-rows" style="margin:0">
+            <a class="crow" href="https://www.google.com/maps/dir/?api=1&destination=1401+Ernest+Ave+%2315+London+ON+N6E+2P6" target="_blank" rel="noopener"><span class="i"><svg><use href="#i-pin"/></svg></span><div><b>1401 Ernest Ave #15</b><span>London, ON N6E 2P6</span></div></a>
+            <a class="crow" href="tel:+15192047300"><span class="i"><svg><use href="#i-phone"/></svg></span><div><b>(519) 204-7300</b><span>Call or text the shop</span></div></a>
+            <a class="crow" href="https://atcellphonerepaircentre.com" target="_blank" rel="noopener"><span class="i"><svg><use href="#i-globe"/></svg></span><div><b>@atcellphoneinfo</b><span>Follow for new stock and deals</span></div></a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Map to A.T. Cellphone Repair Centre" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=1401+Ernest+Ave+%2315,+London,+ON+N6E+2P6&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo"><span class="logo-mark">A.T.</span> Cellphone Repair Centre</div>
+        <p style="max-width:320px;font-size:.92rem">Repairing · Unlocking · Accessories · Phones · Buying &amp; Selling. Over 15 years experience.</p>
+      </div>
+      <div class="foot-links">
+        <div><b>Explore</b><a href="#services">Services</a><a href="#book">Book a repair</a><a href="#shop">Shop</a><a href="#visit">Visit</a></div>
+        <div><b>Contact</b><a href="tel:+15192047300">(519) 204-7300</a><a href="sms:+15192047300">Text us</a><a href="https://atcellphonerepaircentre.com" target="_blank" rel="noopener">atcellphonerepaircentre.com</a></div>
+        <div><b>Hours</b><span>Mon–Sat 10:30 a.m.–7 p.m.</span><span>Sunday closed</span></div>
+      </div>
+    </div>
+    <div class="copy">© <span class="js-year">2026</span> A.T. Cellphone Repair Centre · 1401 Ernest Ave #15, London, Ontario</div>
+  </div>
+</footer>
+
+<div class="homebar-cta"><a href="tel:+15192047300">Call now</a><a href="#book">Book</a></div>
+
+<script>
+(function(){
+  const PHONE = '+15192047300';
+  const TZ = 'America/Toronto';
+
+  // live clock (shop's local time)
+  function tick(){
+    const now = new Date();
+    const t = now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true,timeZone:TZ}).replace(/\s?[AP]M/,'');
+    document.querySelectorAll('.js-time').forEach(el=>el.textContent=t);
+    const d = now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',timeZone:TZ});
+    document.querySelectorAll('.js-date').forEach(el=>el.textContent=d);
+  }
+  tick(); setInterval(tick,15000);
+  document.querySelector('.js-year').textContent = new Date().getFullYear();
+
+  // open / closed status in Toronto time
+  const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const OPEN = 10*60+30, CLOSE = 19*60; // Mon–Sat
+  function torontoNow(){
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:TZ,weekday:'long',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+    return {day:DAYS.indexOf(p.weekday), mins:(+p.hour%24)*60 + +p.minute};
+  }
+  const {day,mins} = torontoNow();
+  const isOpen = day!==0 && mins>=OPEN && mins<CLOSE;
+  const badge = document.querySelector('.js-open'), bt = document.querySelector('.js-open-text');
+  if(isOpen){ bt.textContent = 'Open now · until 7 p.m.'; }
+  else {
+    badge.classList.add('closed');
+    const opensToday = day!==0 && mins<OPEN;
+    const next = opensToday ? 'today' : (day===6 || day===0) ? 'Monday' : 'tomorrow';
+    bt.textContent = 'Closed now · opens ' + next + ' at 10:30 a.m.';
+  }
+
+  // hours as alarms
+  const order=[1,2,3,4,5,6,0];
+  document.querySelector('.js-hours').innerHTML = order.map(d=>{
+    const off = d===0;
+    return `<div class="alarm${off?' off':''}${d===day?' today':''}">
+      <div><div class="t">${off?'Closed':'10:30 – 7:00'}</div><div class="d">${DAYS[d]}${off?'':' · a.m. to p.m.'}</div></div>
+      <span class="toggle" role="img" aria-label="${off?'Closed':'Open'}"></span></div>`;
+  }).join('');
+
+  // hero crack repair
+  const screen = document.querySelector('.js-screen'), fix = document.querySelector('.js-fix');
+  fix.addEventListener('click',()=>{
+    if(screen.classList.contains('fixed')){ screen.classList.remove('fixed'); fix.textContent='Tap to repair this screen'; return; }
+    screen.classList.remove('fixing'); void screen.offsetWidth; screen.classList.add('fixing','fixed');
+    fix.textContent='Good as new ✓  (crack it again)';
+  });
+
+  // rotating word
+  const words=['fix it.','unlock it.','buy it.','sell it.','fix it.'];
+  let wi=0; const sw=document.querySelector('.js-swap');
+  setInterval(()=>{wi=(wi+1)%words.length; sw.textContent=words[wi];},2600);
+
+  // services home screen
+  const apps=[
+    {n:'Screens',i:'screen',t:'Screen repair',d:'Cracked glass, dead pixels, lines or a touch screen that ignores you.',l:['iPhone, Samsung, Pixel, LG and more','Quality display modules in stock','Free tempered glass or headphones with any repair']},
+    {n:'Battery',i:'batt',t:'Battery replacement',d:'Phone dying by lunch or shutting off at 30%? A fresh battery fixes it.',l:['Phones, tablets and laptops','Battery health check while you wait','Often done the same day']},
+    {n:'Charging',i:'plug',t:'Charging port',d:"Cable keeps falling out or won't charge unless you hold it just right.",l:['Port cleaning and replacement','Lightning and USB-C','Wireless charging diagnostics']},
+    {n:'Water',i:'drop',t:'Water damage',d:'Dropped it in the sink, the snow or the pool? Bring it in fast and don’t charge it.',l:['Ultrasonic cleaning','Board inspection under microscope','Data recovery attempts']},
+    {n:'Back glass',i:'back',t:'Back glass & housing',d:'Shattered back panel or bent frame, replaced cleanly with laser equipment.',l:['Laser back-glass removal','Camera lens replacement','Color-matched housings']},
+    {n:'Micro-solder',i:'chip',t:'Board-level repair',d:'The tricky stuff other shops send away. Done in-house under the microscope.',l:['No power / boot loops','Chip and connector work','Face ID and audio IC issues']},
+    {n:'Unlock',i:'unlock',t:'Unlocking',d:'Unlock all kinds of phones so you can use the carrier you want.',l:['Carrier unlocking','Software flashing','Ask us about your model']},
+    {n:'Buy & Sell',i:'swap',t:'Buy & sell devices',d:'We buy and sell all kinds of phones, tablets and laptops.',l:['Cash for your old device','Pre-owned phones with tested parts','Trade-in toward an upgrade']},
+    {n:'Tablets',i:'laptop',t:'Tablets & laptops',d:'iPad, iPod, tablet and laptop repairs, not just phones.',l:['Screens, batteries, keyboards','Refurbished laptops for sale','Software clean-ups']},
+    {n:'Consoles',i:'game',t:'Gaming',d:'Controllers drifting? Ports loose? We work on consoles too.',l:['Console and controller repair','Retro systems in store','Accessories and cables']},
+    {n:'TV boxes',i:'tv',t:'TV boxes',d:'We sell TV boxes and program them, so they work when you get home.',l:['Setup and programming','Remotes and cables','TVs in store']},
+    {n:'SIM & Plans',i:'sim',t:'Plans & SIM cards',d:'Authorized Rogers and chatr agent. SIMs and activations for most carriers.',l:['New activations','Port your number','Prepaid top-ups']},
+  ];
+  const grid=document.querySelector('.js-apps'), sheet=document.querySelector('.js-sheet');
+  grid.innerHTML=apps.map((a,k)=>`<button class="app" type="button" data-k="${k}"><span class="icon"><svg><use href="#i-${a.i}"/></svg></span>${a.n}</button>`).join('');
+  function open(k){
+    const a=apps[k];
+    grid.querySelectorAll('.app').forEach(b=>b.classList.toggle('active',+b.dataset.k===k));
+    sheet.innerHTML=`<div class="grab"></div><span class="big-icon"><svg><use href="#i-${a.i}"/></svg></span><h3>${a.t}</h3><p>${a.d}</p><ul>${a.l.map(x=>`<li>${x}</li>`).join('')}</ul><a class="btn btn-primary" href="#book"><svg><use href="#i-msg"/></svg>Get a quote</a>`;
+    sheet.classList.remove('anim'); void sheet.offsetWidth; sheet.classList.add('anim');
+  }
+  grid.addEventListener('click',e=>{const b=e.target.closest('.app'); if(b) open(+b.dataset.k);});
+  open(0);
+
+  // booking chat -> prefilled SMS
+  const sel={device:'',issue:''};
+  const nameIn=document.querySelector('.js-name'), send=document.querySelector('.js-send'), prev=document.querySelector('.js-preview'), msgs=document.querySelector('.js-msgs');
+  document.querySelectorAll('.chips').forEach(g=>g.addEventListener('click',e=>{
+    const c=e.target.closest('.chip'); if(!c) return;
+    g.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c));
+    sel[g.dataset.q]=c.textContent; update();
+  }));
+  nameIn.addEventListener('input',update);
+  function body(){ return `Hi A.T.! I'd like a repair quote.\nDevice: ${sel.device}\nIssue: ${sel.issue}\nDetails: ${nameIn.value.trim()}`; }
+  function update(){
+    const ready = sel.device && sel.issue && nameIn.value.trim();
+    send.disabled=!ready;
+    prev.innerHTML = (sel.device||sel.issue) ? `<div class="bub me" style="margin-left:auto">${[sel.device,sel.issue,nameIn.value.trim()].filter(Boolean).map(s=>s.replace(/[<>&]/g,'')).join(' · ')}</div>` : '';
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+  document.querySelector('.js-form').addEventListener('submit',e=>{
+    e.preventDefault(); if(send.disabled) return;
+    window.location.href=`sms:${PHONE}?&body=${encodeURIComponent(body())}`;
+    prev.insertAdjacentHTML('beforeend','<div class="bub them">Opening your messages app… we’ll reply with a price during store hours.</div>');
+    msgs.scrollTop=msgs.scrollHeight;
+  });
+
+  // scroll reveal
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
